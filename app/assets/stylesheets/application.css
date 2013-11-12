@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+ .panel-text{
+ 	
+ 	font-size: 35px;
+
+ }

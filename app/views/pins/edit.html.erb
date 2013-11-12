@@ -1,6 +1,15 @@
-<h1>Editing pin</h1>
+<div class="panel panel-primary">
+	<div class="panel-heading panel-text">
+		<h6>Edit pin</h6>
+	</div>
 
-<%= render 'form' %>
+	<div class="panel-body">
+		<%= render 'form' %>
+	</div>
 
-<%= link_to 'Show', @pin %> |
-<%= link_to 'Back', pins_path %>
+	<div class="panel-footer">
+
+		<%= link_to 'Show', @pin, class: 'btn btn-primary' %> |
+		<%= link_to 'Back', pins_path, class: 'btn btn-danger' %>
+	</div>
+</div>
