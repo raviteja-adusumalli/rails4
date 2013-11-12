@@ -2,7 +2,11 @@
   <div class="container">
     <h2 class="h2">Welcome to Pintresting Find More Pictures</h2>
     <div class="login">
-    <%= link_to 'Login',{},class:'btn btn-warning btn-lg' %>
-    <%= link_to 'SignUp',{},class:'btn btn-success btn-lg' %>
+    	<% if user_signed_in? %>
+    		#do something
+    	<% else %>
+    		<%= link_to 'Login',new_user_session_path, class:'btn btn-warning btn-lg' %>
+    		<%= link_to 'SignUp',new_user_registration_path, class:'btn btn-success btn-lg' %>
+    	<% end %>
   	</div>
 </div>
