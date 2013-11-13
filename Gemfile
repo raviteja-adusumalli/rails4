@@ -7,6 +7,10 @@ gem 'devise'
 
 gem 'paperclip', '~> 3.0'
 
+gem 'jquery-turbolinks'
+
+gem 'masonry-rails', '~> 0.2.0'
+
 
 
 # Use SCSS for stylesheets

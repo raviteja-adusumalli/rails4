@@ -1,41 +1,29 @@
-<div class="panel panel-primary">
-  <div class="panel panel-heading panel-text">
-    <h6>Listing pins</h6>
-  </div>
 
-  <div class="panel-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Description</th>
-          <th>User</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+<%= render 'pages/home' unless user_signed_in? %>
 
-      <tbody>
-        <% @pins.each do |pin| %>
-          <tr>
-            <td><%= image_tag pin.image.url(:medium) %></td>
-            <td><%= pin.description %></td>
-            <td><%= pin.user.email if pin.user %></td>
-            <td><%= link_to '', pin_path(pin), class: 'glyphicon glyphicon-eye-open btn btn-primary' %></td>
-            <% if pin.user == current_user %>
-              <td><%= link_to '', edit_pin_path(pin), class: 'glyphicon glyphicon-edit btn btn-warning' %></td>
-              <td><%= link_to '', pin, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash btn btn-danger' %></td>
+<div id="pins" class="transitions-enabled">
+  <% @pins.each do |pin| %>
+    <div class=" box panel panel-default">
+      <div class="panel-body">
+        <%= link_to image_tag(pin.image.url(:medium)), pin_path(pin)%>
+      </div>
+
+      <div class="panel-footer">
+          <%= pin.description %>
+          <%= pin.user.email if pin.user %>
+          
+          <% if pin.user == current_user %>
+            <%= link_to  edit_pin_path(pin), class: 'btn btn-warning'  do %>
+                <span class="glyphicon glyphicon-edit"></span>edit
             <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
 
-  <div class="panel-footer">
-    <% if user_signed_in? %>
-      <%= link_to 'New Pin', new_pin_path, class: 'btn btn-success' %>
-    <% end %>
-  </div>
+            <%= link_to  pin, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+              <span class="glyphicon glyphicon-trash"></span>delete
+            <% end %>
+
+          <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
+      
