@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :destroy, :update, :new]
+  before_action :authorize, only: [:edit, :destroy, :update]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -60,7 +60,7 @@ class PinsController < ApplicationController
 
     def authorize
       @pin = current_user.pins.find_by(id: params[:id])
-              
+
       redirect_to pins_path, notice: 'you are not authorised ' if @pin.nil?
     end
 
